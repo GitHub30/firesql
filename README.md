@@ -1,4 +1,4 @@
-# firesql ![Docker Automated build](https://img.shields.io/docker/automated/nyanpass/firesql.svg) ![Docker Build Status](https://img.shields.io/docker/build/nyanpass/firesql.svg)
+# firesql ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/nyanpass/firesql.svg) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/nyanpass/firesql.svg)
 FireSQL is realtime MySQL like Firebase.
 
 # Install
