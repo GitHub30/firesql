@@ -1,4 +1,4 @@
-version: "3.7"
+version: "2.1"
 services:
 
   mysql:
@@ -15,7 +15,8 @@ services:
     tty: true
     restart: always
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     links:
       - mysql
     environment:
