@@ -3,7 +3,7 @@ import eventlet
 eventlet.monkey_patch()
 import socketio
 import threading
-from flask import Flask
+from flask import Flask, jsonify
 from pycolor import GREEN, END
 
 def query(sql):
@@ -19,7 +19,7 @@ def query(sql):
 app = Flask(__name__)
 @app.route('/query/<path:sql>')
 def flask_query(sql):
-    query(sql)
+    return jsonify(query(sql))
 
 sio = socketio.Server()
 app = socketio.WSGIApp(sio, app)
