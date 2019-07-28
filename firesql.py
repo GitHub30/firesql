@@ -4,6 +4,7 @@ eventlet.monkey_patch()
 import socketio
 import threading
 from flask import Flask, jsonify
+from flask_cors import CORS
 from pycolor import GREEN, END
 
 def query(sql):
@@ -17,6 +18,7 @@ def query(sql):
     return rows
 
 app = Flask(__name__)
+CORS(app)
 @app.route('/query/<path:sql>')
 def flask_query(sql):
     return jsonify(query(sql))
