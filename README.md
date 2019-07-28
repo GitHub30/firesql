@@ -3,7 +3,9 @@ FireSQL is realtime MySQL like Firebase.
 
 # Install
 ```bash
-docker run --name firesql -p 8080:8080 -d nyanpass/firesql
-sleep 20
-docker exec -t firesql python3 /root/firesql/examples/sync_server.py
+# Start MySQL
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --server-id=1 --log_bin --default_authentication_plugin=mysql_native_password
+
+# Start FireSQL
+docker run -p 8080:8080 --link mysql -e MYSQL_HOST=mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb -d nyanpass/firesql
 ```
