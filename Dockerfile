@@ -9,4 +9,4 @@ RUN set -xe \
     && python setup.py install \
     && apk del .build-deps
 
-CMD ["python /firesql/examples/sync_server.py"]
+CMD ["python", "/firesql/examples/sync_server.py"]
