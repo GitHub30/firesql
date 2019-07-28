@@ -3,13 +3,10 @@ import eventlet
 eventlet.monkey_patch()
 import socketio
 import threading
+from flask import Flask
 from pycolor import GREEN, END
 
-sio = socketio.Server()
-app = socketio.WSGIApp(sio)
-
-@sio.event
-def _query(sid, sql):
+def query(sql):
     print(GREEN + sql + END)
     conn = pymysql.connect(**MYSQL_SETTINGS)
     cur = conn.cursor(pymysql.cursors.DictCursor)
@@ -18,6 +15,18 @@ def _query(sid, sql):
     cur.close()
     conn.close()
     return rows
+
+app = Flask(__name__)
+@app.route('/query/<path:sql>')
+def flask_query(sql):
+    query(sql)
+
+sio = socketio.Server()
+app = socketio.WSGIApp(sio, app)
+
+@sio.event
+def _query(sid, sql):
+    return query(sql)
 
 @sio.event
 def _enter_room(sid, room_name):
