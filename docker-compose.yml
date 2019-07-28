@@ -13,6 +13,8 @@ services:
     image: nyanpass/firesql
     tty: true
     restart: always
+    depends_on:
+      - mysql
     links:
       - mysql
     environment:
