@@ -7,6 +7,8 @@ RUN set -xe \
     && git clone https://github.com/howmp/python-mysql-replication \
     && cd python-mysql-replication \
     && python setup.py install \
+    && cd .. \
+    && rm -rf python-mysql-replication \
     && apk del .build-deps
 
 CMD ["python", "/firesql/examples/sync_server.py"]
