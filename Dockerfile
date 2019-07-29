@@ -10,6 +10,6 @@ RUN set -xe \
     && rm -rf python-mysql-replication \
     && apk del .build-deps
 
-COPY *.py ~/
+COPY *.py /root/
 
-CMD ["python", "~/firesql.py"]
+CMD ["python", "/root/firesql.py"]
