@@ -13,6 +13,8 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+    cap_add:
+        - SYS_NICE  # CAP_SYS_NICE
 
   firesql:
     image: nyanpass/firesql
