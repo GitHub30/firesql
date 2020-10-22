@@ -20,7 +20,6 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
@@ -40,6 +39,6 @@ services:
     environment:
       MYSQL_HOST: mysql
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: sakila
     ports:
       - 8080:8080
